@@ -42,11 +42,11 @@ const common = {
     cssExtractPlugin,
     new HtmlWebpackPlugin({
       title: 'React',
-      template:'./src/assets/index.html'
+      template:PATHS.src+'/assets/index.html'
     })],
     resolve: {
         // you can now require('file') instead of require('file.coffee')
-        root:[path.resolve('./src/assets')],
+        root:[path.resolve(PATHS.src+'/assets')],
         extensions: ['', '.jsx','.js', '.json','.scss','.css']
     },
     htmlLoader: {
