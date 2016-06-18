@@ -1,9 +1,24 @@
+//css
+
+//js
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-//redux provider
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
+
+import Home from './components/home/Home'
+
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import configureStore from './stores/store'
+
+//关联reducers, store, actions
+const store = configureStore()
 
 ReactDOM.render(
-  <div>hello world</div>,
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={Home}/>
+    </Router>
+  </Provider>,
   document.getElementById('app')
 );
