@@ -17,9 +17,13 @@ process.env.NODE_ENV = TARGET;
 process.env.BABEL_ENV = TARGET;
 
 const common = {
-    entry: {
-        app:PATHS.src
-    },
+    entry: [
+        PATHS.src + '/assets/libs/es5-shim.js',
+        PATHS.src + '/assets/libs/es5-sham.js',
+        PATHS.src + '/assets/libs/json3.js',
+        './node_modules/console-polyfill/index.js',
+        PATHS.src
+    ],
     output: {
         publicPath : '/',
         path: PATHS.dist,
@@ -36,7 +40,11 @@ const common = {
           { test: /\.(ttf|eot|svg)(\?t=\d+)?$/, loader: "file-loader?name=font/[name].[ext]?[hash:16]" },
           { test: /\.jpg$/, loader: "file-loader?name=img/[name].[ext]?[hash:16]" },
           { test: /\.png$/, loader: 'url-loader?name=img/[name].[ext]?[hash:16]&limit=8192' }
-      ]
+      ],
+      postLoaders: [{
+        test: /\.jsx?$/,
+        loaders: ['es3ify-loader'],
+      }],
     },
     plugins: [
     cssExtractPlugin,
@@ -79,7 +87,7 @@ if(TARGET === 'dev' || !TARGET) {
       //
       // 0.0.0.0 is available to all network devices unlike default
       // localhost
-      host: process.env.HOST,
+      host: '0.0.0.0',
       port: process.env.PORT
     },
     plugins: [

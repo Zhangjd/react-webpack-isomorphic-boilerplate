@@ -10,8 +10,14 @@
     "production": "webpack -p"
   },
   "dependencies": {
+    "babel-plugin-transform-es3-property-literals": "^6.8.0",
+    "babel-plugin-transform-es5-property-mutators": "^6.8.0",
+    "babel-plugin-transform-jscript": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
-    "base": "^0.8.1",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "console-polyfill": "^0.2.2",
+    "es3ify-loader": "^0.2.0",
     "font-awesome": "^4.6.1",
     "header": "^0.1.1",
     "imports": "^1.0.0",
