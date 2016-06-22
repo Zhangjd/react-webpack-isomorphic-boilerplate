@@ -34,7 +34,7 @@ const common = {
     module: {
       loaders: [
           { test: /\.html$/, loader: "html" },
-          { test: /\.(css|scss)$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract("style-loader", "css-loader", "scss-loader")},
+          { test: /\.(css|scss)$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract("style", "css!sass")},
           { test: /\.jsx?$/,  exclude: /(node_modules|bower_components)/, loaders: ['babel?cacheDirectory']},
           { test: /\.woff(2)?(\?t=\d+)?$/, loader: "url-loader?name=font/[name].[ext]?[hash]&limit=10000&minetype=application/font-woff" },
           { test: /\.(ttf|eot|svg)(\?t=\d+)?$/, loader: "file-loader?name=font/[name].[ext]?[hash:16]" },
