@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server",
+    "dev-ie8": "webpack-dev-server",
     "build": "webpack",
     "production": "webpack -p"
   },
