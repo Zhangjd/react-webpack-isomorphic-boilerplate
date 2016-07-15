@@ -2,6 +2,7 @@
 
 //js
 require('core-js/fn/object/assign')
+require('babel-polyfill')
 
 import React from 'react'
 import ReactDOM from 'react-dom'
