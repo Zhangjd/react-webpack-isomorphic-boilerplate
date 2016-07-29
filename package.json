@@ -47,7 +47,6 @@
     "font-awesome-webpack": "0.0.4",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.16.0",
-    "images": "^3.0.0",
     "node-sass": "^3.5.3",
     "npm-install-webpack-plugin": "^4.0.4",
     "sass-loader": "^3.2.0",
@@ -55,6 +54,9 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.12.0"
+    "webpack-merge": "^0.12.0",
+    "colors": "^1.1.2",
+    "ftps": "^0.4.7",
+    "simple-ssh": "^0.9.0"
   }
 }
