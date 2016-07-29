@@ -37,7 +37,7 @@ function walk(dir){
   var dirList = fs.readdirSync(dir);
   dirList.forEach(function(item){
     if(fs.statSync(dir + path.sep + item).isDirectory()){
-      ssh.exec('mkdir -p '+(dir + path.sep + item).replace('dist'+path.sep,''), {
+      ssh.exec('mkdir -p '+(dir + '/' + item).replace('dist'+path.sep,''), {
           err: function(stderr) {
               console.log(stderr); // this-does-not-exist: command not found
           }
