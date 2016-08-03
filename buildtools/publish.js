@@ -1,5 +1,6 @@
 var colors = require('colors');
 var FTPS = require('ftps');
+var client = require('scp2')
 var path = require('path');
 var fs = require('fs');
 var config = require('./config');
@@ -30,37 +31,8 @@ var ftps = new FTPS({
 });
 
 console.log(colors.yellow('正在发布文件到'+config[TARGET].name+' ...'));
+client.scp('dist/', config[TARGET].user+':'+config[TARGET].pass+'@'+config[TARGET].host+':'+config[TARGET].baseDir, function(err) {
 
-//远程创建文件夹
-var fileList = []
-function walk(dir){
-  var dirList = fs.readdirSync(dir);
-  dirList.forEach(function(item){
-    if(fs.statSync(dir + path.sep + item).isDirectory()){
-      ssh.exec('mkdir -p '+(dir + '/' + item).replace('dist'+path.sep,''), {
-          err: function(stderr) {
-              console.log(stderr); // this-does-not-exist: command not found
-          }
-      })
-      walk(dir + path.sep + item);
-    }else{
-      fileList.push(dir + path.sep + item);
-    }
-  })
-}
-
-walk('dist')
-ssh.start()
-
-//上传文件
-ftps.cd(config[TARGET].baseDir)
-fileList.forEach((item)=>{
-  const destPath = item.replace('dist'+path.sep,'').replace(new RegExp('\\\\','g'),'/')
-  ftps.put(item, destPath)
-})
-ftps.exec(function (err, res) {
-  // err will be null (to respect async convention)
-  // res is an hash with { error: stderr || null, data: stdout }
   if(err){
     console.error(err)
   }
