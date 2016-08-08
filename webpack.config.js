@@ -4,7 +4,7 @@ const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var cssExtractPlugin = new ExtractTextPlugin('css/[contenthash:16].css');
+var cssExtractPlugin = new ExtractTextPlugin('css/style.css?[contenthash:16]');
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -27,7 +27,7 @@ const common = {
     output: {
         publicPath : '/',
         path: PATHS.dist,
-        filename: 'bundle/bundle.js'
+        filename: 'bundle/bundle.js?[hash]'
     },
     externals: [{
     }],
