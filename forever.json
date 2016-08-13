@@ -1,0 +1,15 @@
+{
+  "max": 3,
+  "silent": false,
+  "script": "bin/www",
+  "args": [],
+  "watch": true,
+  "append": true,
+  "watchDirectory": "绝对路径",
+  "sourceDir":"绝对路径",
+  "watchIgnorePatterns":"*.log",
+  "env": { "NODE_ENV": "production" },
+  "logFile": "绝对路径/log.log",
+  "outFile": "绝对路径/out.log",
+  "errFile": "绝对路径/err.log"
+}
