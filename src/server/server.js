@@ -34,10 +34,12 @@ const renderFullPage = (html, initialState) => {
 }
 
 if(process.env.NODE_ENV !== 'production'){
+  console.log('server stared in dev mode')
   const compiler = webpack(webpackConfig)
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
   app.use(webpackHotMiddleware(compiler))
 }else{
+  console.log('server stared in production mode')
   app.use('/static', express.static(__dirname + '/../../dist'))
 }
 

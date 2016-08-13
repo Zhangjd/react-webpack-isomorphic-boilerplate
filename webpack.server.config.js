@@ -13,9 +13,6 @@ const PATHS = {
   dist: path.join(__dirname, 'dist')
 }
 
-process.env.NODE_ENV = TARGET
-process.env.BABEL_ENV = TARGET
-
 const common = {
   entry: [
       PATHS.src + '/assets/libs/es5-shim.js',

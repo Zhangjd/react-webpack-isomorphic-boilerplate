@@ -7,8 +7,10 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "dev-ie8": "webpack-dev-server",
+    "server-dev": "node src/server/index.js",
     "build": "webpack",
-    "production": "webpack -p"
+    "production": "webpack -p",
+    "server": "NODE_ENV=production node src/server/index.js"
   },
   "dependencies": {
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
@@ -26,6 +28,7 @@
     "imports-loader": "^0.6.5",
     "jquery": "^1.12.4",
     "jquery.cookie": "^1.4.1",
+    "newrelic": "^1.29.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.5",
@@ -48,6 +51,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "font-awesome-webpack": "0.0.4",
+    "forever": "^0.15.2",
     "ftps": "^0.4.7",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.16.0",
