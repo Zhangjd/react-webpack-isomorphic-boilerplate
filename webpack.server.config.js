@@ -6,14 +6,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var cssExtractPlugin = new ExtractTextPlugin('css/style.css?[contenthash:16]')
 
-const TARGET = process.env.npm_lifecycle_event
+var Webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin')
+var webpack_isomorphic_tools_plugin = 
+  // webpack-isomorphic-tools settings reside in a separate .js file 
+  // (because they will be used in the web server code too).
+  new Webpack_isomorphic_tools_plugin(require('./webpack-isomorphic-tools-configuration'))
+  // also enter development mode since it's a development webpack configuration
+  // (see below for explanation)
+  .development()
 
 const PATHS = {
+  context: path.join(__dirname),
   src: path.join(__dirname, 'src'),
   dist: path.join(__dirname, 'dist')
 }
 
 const common = {
+  context: PATHS.context,
   entry: [
       PATHS.src + '/assets/libs/es5-shim.js',
       PATHS.src + '/assets/libs/es5-sham.js',
@@ -34,10 +43,10 @@ const common = {
         { test: /\.html$/, loader: "html" },
         { test: /\.(css|scss)$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract("style", "css!sass")},
         { test: /\.jsx?$/,  exclude: /(node_modules|bower_components)/, loaders: ['babel?cacheDirectory']},
-        { test: /\.woff(2)?(\?t=\d+)?$/, loader: "url-loader?name=font/[name].[ext]?[hash]&limit=10000&minetype=application/font-woff" },
-        { test: /\.(ttf|eot|svg)(\?t=\d+)?$/, loader: "file-loader?name=font/[name].[ext]?[hash:16]" },
-        { test: /\.jpg$/, loader: "file-loader?name=img/[name].[ext]?[hash:16]" },
-        { test: /\.png$/, loader: 'url-loader?name=img/[name].[ext]?[hash:16]&limit=8192' }
+        { test: webpack_isomorphic_tools_plugin.regular_expression('woff'), loader: "url-loader?name=font/[name].[ext]?[hash]&limit=10000&minetype=application/font-woff" },
+        { test: webpack_isomorphic_tools_plugin.regular_expression('iconfonts'), loader: "file-loader?name=font/[name].[ext]?[hash:16]" },
+        { test: webpack_isomorphic_tools_plugin.regular_expression('jpg'), loader: "file-loader?name=img/[name].[ext]?[hash:16]" },
+        { test: webpack_isomorphic_tools_plugin.regular_expression('png'), loader: 'url-loader?name=img/[name].[ext]?[hash:16]&limit=8192' }
     ],
     postLoaders: [{
       test: /\.jsx?$/,
@@ -87,6 +96,7 @@ module.exports = merge(common, {
     port: process.env.PORT
   },
   plugins: [
+    webpack_isomorphic_tools_plugin,
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),

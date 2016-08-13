@@ -2,3 +2,7 @@ node_modules
 dist
 
 *.log
+
+# webpack-isomorphic-tools
+/webpack-stats.json
+/webpack-assets.json

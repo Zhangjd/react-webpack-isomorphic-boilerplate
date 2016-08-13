@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "dev-ie8": "webpack-dev-server",
-    "server-dev": "node src/server/index.js",
+    "server-dev": "NODE_ENV=development node src/server/index.js",
     "build": "webpack",
+    "build-server": "webpack -p --config=webpack.server.config.js",
     "production": "webpack -p",
     "server": "NODE_ENV=production node src/server/index.js"
   },

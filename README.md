@@ -1,6 +1,6 @@
 # react-webpack-isomorphic-boilerplate
 
-This project serves as a boilerplate to start building an isomorphic rendering application in React, base on the following boilerplate code:
+This project serves as a boilerplate to start building an isomorphic rendering application in React, based on the following boilerplate code:
 
 * [react-webpack-project](http://git.oschina.net/alanguo/react-webpack-project)
 * [isomorphic-redux-app](https://github.com/caljrimmer/isomorphic-redux-app)
@@ -37,6 +37,7 @@ In the project's directory, run the following commands:
 
 ```
 $ npm install
+$ npm run build-server
 $ npm run server-dev
 ```
 
@@ -53,7 +54,7 @@ Production has Devtools, logging and hot reloading middleware removed and the sc
 In the project's directory, run the following commands:
 
 ```
-$ npm run build
+$ npm run production
 $ npm run server
 ```
 

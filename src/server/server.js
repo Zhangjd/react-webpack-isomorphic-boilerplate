@@ -6,7 +6,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import React from 'react'
-import {RoutingContext, match} from 'react-router'
+import {renderToString} from 'react-dom/server'
+import {RouterContext, match} from 'react-router'
 import {Provider} from 'react-redux'
 
 import configureStore from '../stores/store.js'
@@ -36,7 +37,7 @@ const renderFullPage = (html, initialState) => {
 if(process.env.NODE_ENV !== 'production'){
   console.log('server stared in dev mode')
   const compiler = webpack(webpackConfig)
-  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+  app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: webpackConfig.output.publicPath}))
   app.use(webpackHotMiddleware(compiler))
 }else{
   console.log('server stared in production mode')
@@ -55,7 +56,7 @@ app.get('/*', function (req, res) {
 
       const html = renderToString(
         <Provider store={store}>
-          <RoutingContext {...renderProps} />
+          <RouterContext {...renderProps} />
         </Provider>
       )
       res.end(renderFullPage(html, store.getState()))
