@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('./newrelic')
+// require('newrelic')
 require('babel-core/register')
 
 var Webpack_isomorphic_tools = require('webpack-isomorphic-tools')
