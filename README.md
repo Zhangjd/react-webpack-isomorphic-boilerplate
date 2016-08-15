@@ -24,11 +24,11 @@ For more information, please visit my website [探索 React 服务器端加载](
 - Redux
 - Redux-DevTools
 - Babel
-- ~~[New Relic](https://github.com/newrelic/node-newrelic) (Bug founded?)~~
+- [New Relic](https://github.com/newrelic/node-newrelic)
 
 ## Configuration
 
-1. ~~If you wish to use `New Relic` for application performance management & monitoring, configure your own `app_name` and `license_key` in `src/server/newrelic.js`. Otherwise, please uncomment the line `require('./newrelic')` in `src/server/index.js`.~~
+1. If you wish to use `New Relic` for application performance management & monitoring, configure your own `app_name` and `license_key` in `src/server/newrelic.js`. Otherwise, please uncomment the line `require('./newrelic')` in `src/server/index.js`. **Note: Please use `npm install` instead of cnpm, otherwise new-relic module will get into an infinite loop.**
 2. If you wish to use `Forever` module for ensuring that a given script runs continuously, please set your own path info in JSON configuration file `forever.json`, then start the process with forever.
 
 ## Development Installation

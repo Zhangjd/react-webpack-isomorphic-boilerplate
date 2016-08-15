@@ -26,7 +26,7 @@ const renderFullPage = (html, initialState) => {
       <body>
         <div id="root">${html}</div>
         <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)} 
+          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
         <script src="/static/bundle.js"></script>
       </body>
@@ -66,7 +66,7 @@ app.get('/*', function (req, res) {
   })
 })
 
-const server = app.listen(3002, function () {
+const server = app.listen(process.env.SERVER_PORT || 3002, function () {
   const host = server.address().address
   const port = server.address().port
   console.log('Example app listening at http://%s:%s', host, port)
