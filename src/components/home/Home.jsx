@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
 class Home extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
   }
   render() {
+    console.log(this.props.state)
     return (
       <div>Hello World</div>
     )
@@ -16,7 +17,7 @@ class Home extends React.Component {
 //使用connect创建component，把dispatch和state传进ui component
 export default connect(
   (state)=>({
-
+    state: state
   }),
   (dispatch)=>({
 

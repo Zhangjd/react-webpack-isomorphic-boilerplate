@@ -7,8 +7,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var cssExtractPlugin = new ExtractTextPlugin('css/style.css?[contenthash:16]')
 
 var Webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin')
-var webpack_isomorphic_tools_plugin = 
-  // webpack-isomorphic-tools settings reside in a separate .js file 
+var webpack_isomorphic_tools_plugin =
+  // webpack-isomorphic-tools settings reside in a separate .js file
   // (because they will be used in the web server code too).
   new Webpack_isomorphic_tools_plugin(require('./webpack-isomorphic-tools-configuration'))
   // also enter development mode since it's a development webpack configuration
@@ -55,10 +55,11 @@ const common = {
   },
   plugins: [
   cssExtractPlugin,
-  new HtmlWebpackPlugin({
-    title: 'React',
-    template:PATHS.src+'/assets/index.html'
-  })],
+  // new HtmlWebpackPlugin({
+  //   title: 'React',
+  //   template:PATHS.src+'/assets/index.html'
+  // })
+  ],
   resolve: {
       // you can now require('file') instead of require('file.coffee')
       root:[path.resolve(PATHS.src+'/assets')],

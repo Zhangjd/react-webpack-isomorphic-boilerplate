@@ -12,7 +12,8 @@ import configureStore from './stores/store'
 import routes from './routes.jsx'
 
 //关联reducers, store, actions
-const store = configureStore()
+const initialState = window.__INITIAL_STATE__
+const store = configureStore(initialState)
 
 ReactDOM.render(
   <Provider store={store}>
